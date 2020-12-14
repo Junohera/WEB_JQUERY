@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04_DOM_Search</title>
+    <script src="script/jquery-3.5.1-min.js"></script>
+    <script>
+        // $(function() {
+        //     $("h3:even").css({
+        //         backgroundColor: "black",
+        //         color: "white",
+        //     });
+        // });
+
+        // $(function() {
+        //     $("h3").filter(":odd").css({
+        //         backgroundColor: "red",
+        //         color: "white",
+        //     });
+        // })
+
+        // $(function() {
+        //     $("h3").filter(function(index){
+        //         return index % 3 === 0;
+        //     }).css({
+        //         backgroundColor: "red",
+        //         color: "white",
+        //     });
+        // });
+
+        // $(function() {
+        //     $("h3").css("background", "orange")
+        //         .filter(":even").css("color","orange")
+        //     .end()
+        //         .filter(":odd").css("color","white");
+        // });
+
+        // $(function() {
+        //     $("h1")
+        //         .css("background", "gray")
+        //     .add("h2")
+        //         .css("color", "red");
+        // });
+
+        $(function() {
+            $("h1").each(function() {
+                if ($(this).is(".select")) {
+                    $(this).css("color", "red");
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1 class="select">Header - 0</h1>
+    <h1>Header - 1</h1>
+    <h1 class="select">Header - 2</h1>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>05_DOM_Operation</title>
+    <style>
+        .item_1 {background: red; color: white;}
+        .item_2 {background: pink; color: white;}
+        .item_3 {background: orange; color: white;}
+    </style>
+    <script src="script/jquery-3.5.1-min.js"></script>
+    <script>
+        // $(function() {
+        //     $("h1").addClass("item_1");
+        // });
+        // $(function() {
+        //     $("h1").addClass(index => (
+        //         "item_" + (index + 1)
+        //     ));
+        // });
+        // $(function() {
+        //     $("h1").removeClass(index => (
+        //         index === 0 ? "item_" + (index + 1) : false
+        //     ));
+        // });
+
+        // $(function() {
+        //     // $("img").each(function(){
+        //     //     var src = $(this).attr("src");
+        //     //     console.log('src =>', JSON.stringify(src, undefined, 2));
+        //     // });
+
+        //     // $("img").attr("width", "300");
+
+        //     // $("img").attr("width", index => (index+1) * 100);
+
+        //     $("img").attr({
+        //         width: index => (index + 1) * 100,
+        //         height : index => (index + 1) * 100,
+        //     });
+        // });
+
+        // $(function() {
+        //     $("img").removeAttr("width");
+        // });
+
+        // $(function() {
+        //     var color = $("h1").css("color");
+        //     console.log('color =>', JSON.stringify(color, undefined, 2));
+        // });
+
+        // $(function() {
+        //     $("h1").css({
+        //         color: i => ["red","green","blue",][i],
+        //         background : "black",
+        //     });
+        // });
+
+        // $(function() {
+        //     var html = $("h1").html();
+        //     console.log('html =>', JSON.stringify(html, undefined, 2));
+
+        //     var text = $("h1").text();
+        //     console.log('text =>', JSON.stringify(text, undefined, 2));
+        // });
+
+        // $(function() {
+        //     $(".useText").text("<h1>$().text()</h1>");
+        //     $(".useHtml").html("<h1>$().html()</h1>");
+
+        //     $("h1").html(function(inde, html) {
+        //         return '<i>' + html + '</i>';
+        //     });
+        //     $("h2").text(function(inde, html) {
+        //         return '<i>' + html + '</i>';
+        //     });
+        // });
+        
+        // $(function() {
+        //     $("h1").first().remove();
+        // });
+
+        // $(function() {
+        //     $("div").empty();
+        // });
+
+        // $(function() {
+        //     $("<h1></h1>").html("Hello Jquery~!~!").appendTo("body");
+        //     $("<h1>Hello Jquery...</h1>").appendTo("body");
+
+        //     $("<img/>").attr({
+        //         src: "images/Koala.jpg",
+        //         width: "200"
+        //     }).appendTo("body");
+        //     $("<img/>").attr("src", "images/Penguins.jpg").appendTo("body");
+        // });
+
+        /*
+            문서객체의 삽입(1)
+                $(dom).appendTo(target);        : dom을 target의 마지막 자식 추가
+                $(dom).prependTo(target);       : dom을 target의 첫번째 자식 추가
+                $(dom).insertAfter(target);     : dom을 target의 다음 형제 추가
+                $(dom).insertBefore(target);    : dom을 target의 이전 형제 추가
+
+            문서객체의 삽입(2)
+                $(target).append(dom);          : dom을 target의 마지막자식 추가
+                $(target).prepend(dom);         : dom을 target의 첫번째자식 추가
+                $(target).after(dom);           : dom을 target의 다음 추가
+                $(target).before(dom);          : dom을 target의 이전 추가
+        */
+
+        // $(function() {
+        //     var h1 = "<h1>Header ~~ 1</h1>";
+        //     var h2 = "<h2>Header ~~ 2</h2>";
+        //     $("body").append(h1, h2, h1, h2);
+
+        //     var content = ['홍길동', '김길동', '박길동'];
+        //     $.each(content, function(index, value) {
+        //         $("#name_region").append("<li>" + value + "</li>");
+        //     });
+        // });
+
+        // $(function() {
+        //     $("<div>이길동</div>").insertAfter($("h1"));
+        // });
+
+        // $(function() {
+        //     $("img").css("width", "200");
+        //     setInterval(() => {
+        //         $("img").first().appendTo("#content");
+        //     }, 1000);
+        // })
+
+        $(function() {
+            // $("div").append($("h1"));
+            $("div").append($("h1").clone());
+        });
+
+        /*
+            - clone() : 문서 객체 복제
+            - $(selector).clone();
+            - $(selector).clone(Boolean dataAndEvents)
+            - $(selector).clone(Boolean dataAndEvents, Boolean deepDataAndEvents)
+        */
+    </script>
+</head>
+<body>
+    <h1>Header - 0</h1>
+    <h2>Header - 1</h2>
+    <hr>
+    <div></div>
+    <hr>
+
+    <!-- <div id="content">
+        <img src="images/Chrysanthemum.jpg" alt="">
+        <img src="images/Desert.jpg" alt="">
+        <img src="images/Hydrangeas.jpg" alt="">
+        <img src="images/Koala.jpg" alt="">
+        <img src="images/Penguins.jpg" alt="">
+        <img src="images/Tulips.jpg" alt="">
+    </div> -->
+    
+    <!-- <div>
+        <b>데이터</b>
+        <ul id="name_region"></ul>
+    </div> -->
+    <!-- <div>
+        <h1>Header - 0</h1>
+        <h1>Header - 1</h1>
+    </div> -->
+
+
+    <!-- <h1>0</h1>
+    <h1>1</h1>
+    <h1>2</h1>
+    <h2>0</h2>
+    <h2>1</h2>
+    <h2>2</h2> -->
+
+    <!-- <div class="useHtml">0</div>
+    <div class="useHtml">1</div>
+    <div class="useHtml">2</div>
+    <div class="useText">0</div>
+    <div class="useText">1</div>
+    <div class="useText">2</div> -->
+
+    <!-- <h1>Header - 0</h1>
+    <h1>Header - 1</h1>
+    <h1>Header - 2</h1> -->
+
+    <!-- <h1 class="item_1">Koala.jpg</h1>
+    <img src="images/Koala.jpg" width="150">
+    <h1 class="item_2">Penguins.jpg</h1>
+    <img src="images/Penguins.jpg" width="150">
+    <h1 class="item_3">Tulips.jpg</h1>
+    <img src="images/Tulips.jpg" width="150"> -->
+</body>
+</html>
