@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>18_Gallery</title>
+    <script src="script/jquery-3.5.1-min.js"></script>
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #layer1 {
+            position: relative;
+            width: 1025px;
+            height: 137px;
+            margin: 0 auto;
+        }
+        .view1 {
+            position: relative;
+            width: 1025px;
+            height: 115px;
+            overflow: hidden;
+        }
+        .view2 {
+            position: relative;
+            width: 1025px;
+            height: 22px;
+            margin: 0 auto;
+        }
+        .imgs {
+            position: absolute;
+            width: 9225px;
+            height: 115px;
+            top: 0px;
+            left: 0px;
+            transition: 0.4s;
+        }
+        .remote{
+            position: relative;
+            width: 240px;
+            height: 20px;
+            float: right;
+        }
+        .btns {
+            position: relative;
+            width: 18px;
+            height: 18px;
+            border: 1px solid black;
+            float: left;
+            font-size: 90%;
+            font-weight: bold;
+            line-height: 18px;
+            text-align: center;
+        }
+
+        .selected {
+            background-color: black;
+            color: white;
+        }
+        .btns:hover {
+            background-color: black;
+            color: white;
+        }
+
+    </style>
+    <script>
+         var imgs = [
+            "images/H1.png"
+            , "images/H2.png"
+            , "images/H3.png"
+            , "images/H4.png"
+            , "images/H5.png"
+            , "images/H6.png"
+            , "images/H7.png"
+            , "images/H8.png"
+            , "images/H9.png"
+        ];
+
+        var num = 0;
+        var auto = false;
+        var timer = null;
+
+        $(function(){
+            var imgTag = "";
+            imgTag += "<div class=\"imgs\">";
+            for (var i = 0; i < imgs.length; i++) {
+                imgTag += "<img src=\""+ imgs[i] +"\" >";
+            }
+            imgTag += "</div>";
+            $(imgTag).appendTo(".view1");
+
+            $(".direct").click(function() {
+                if (auto) return;
+
+                num = $(this).index() - 1;
+                $(".imgs").css({
+                    left: - (1025 * num)
+                });
+                
+                $(this).addClass("selected").siblings().removeClass("selected");
+            });
+
+            $(".left").click(function() {
+                if (auto) return;
+
+                if (num !== 0) {
+                    num--;
+                    $(".direct").eq(num).trigger("click");
+                }
+            });
+            $(".right").click(function() {
+                if (auto) return;
+
+                if (num !== 9) {
+                    num++;
+                    $(".direct").eq(num).trigger("click");
+                }
+            });
+            $(".auto").click(function() {
+                auto = !auto;
+                if (auto) {
+                    $(".auto").addClass("selected");
+                    timer = setInterval(function() {
+                        num++;
+                        if (num === 9) {
+                            num = 0;
+                        }
+                        
+                        $(".imgs").css({
+                            left: - (1025 * num)
+                        });
+                        
+                        $(".direct").eq(num).addClass("selected").siblings().removeClass("selected");
+                        $(".auto").addClass("selected");
+                    }, 1000);
+                } else {
+                    $(this).removeClass("selected");
+                    window.clearInterval(timer);
+                }
+            });
+
+            $(".auto").trigger("click");
+        });
+
+    </script>
+</head>
+<body>
+    <div id="layer1">
+        <div class="view1">
+
+        </div>
+        <div class="view2">
+            <div class="remote">
+                <div class="btns left">&lt;</div>
+                <div class="btns direct selected">1</div>
+                <div class="btns direct">2</div>
+                <div class="btns direct">3</div>
+                <div class="btns direct">4</div>
+                <div class="btns direct">5</div>
+                <div class="btns direct">6</div>
+                <div class="btns direct">7</div>
+                <div class="btns direct">8</div>
+                <div class="btns direct">9</div>
+                <div class="btns right">&gt;</div>
+                <div class="btns auto">ㅁ</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

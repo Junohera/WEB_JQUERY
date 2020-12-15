@@ -42,21 +42,64 @@
             //     alert(header + " : " + paragraph);
             // })
 
-            $("h1").click(function() {
-                $(this).html(function(index, el) {
-                    return el + ">";
-                })
-            });
+            // $("h1").click(function() {
+            //     $(this).html(function(index, el) {
+            //         return el + ">";
+            //     })
+            // });
 
-            setInterval(function() {
-                $("h1").last().trigger("click");
-            }, 3000);
+            // setInterval(function() {
+            //     $("h1").last().trigger("click");
+            // }, 3000);
+
+            /*
+                마우스 이벤트
+
+                    - click
+                    - dbclick
+                    - mousedown : 누를 때
+                    - mouseup : 뗄 때
+                    - mouseenter : 요소경계 외부에서 내부로 이동시
+                    - mouseleave : 요소경계 내부에서 외부로 이동시
+                    - mousemove
+                    - mouseout : 요소 벗어날 시
+                    - mouseover : 요소 들어올 시
+            */
+            // $(".outer")
+            //     .mouseover(function() {
+            //         $("body").append("<h3>mouseOver~</h3>");
+            //     })
+            //     .mouseenter(function() {
+            //         $("body").append("<h3>mouseEnter</h3>");
+            //     });
+
+            /* #입력 #textarea #최대크기 #게시판 #입력 */
+            $("textarea")
+                .keyup(function(e) {
+                    var inputLength = $(this).val().length;
+                    var remain = 150 - inputLength;
+                    $("h1").html(remain);
+
+                    $("h1").css({
+                        color: remain >= 0 ? "black" : "red",
+                    });
+                });
         });
     </script>
 </head>
 <body>
-    <h1>Start : </h1>
-    <h1>Start : </h1>
+    <div>
+        <p>지금 내 생각을</p>
+        <h1>150</h1>
+        <textarea cols="70" rows="5"></textarea>
+    </div>
+
+    <!-- <div class="outer">
+        <div class="inner"></div>
+    </div> -->
+
+    <!-- <h1>Start : </h1>
+    <h1>Start : </h1> -->
 
     <!-- <div>
         <h1>Header1</h1>

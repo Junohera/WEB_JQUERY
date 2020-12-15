@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10_Effect 04</title>
+    <style>
+        span {color: red; cursor: pointer;}
+        div {
+            margin: 3px;
+            width: 100px;
+            display: none;
+            height: 100px;
+            float: left;
+        }
+        div#red {background :#ff0000;}
+        div#green {background :#00ff00;}
+        div#blue {background :#0000ff;}
+    </style>
+    <script src="script/jquery-3.5.1-min.js"></script>
+    <script>
+        $(function(){
+            $("#fin").click(function() {
+              $("div").fadeIn(2000);
+           });
+
+           $("#fout").click(function() {
+              $("div").fadeOut(2000);
+           });
+
+           $("#fToggle").click(function() {
+              $("div").fadeToggle(2000);
+           });
+        });
+    </script>
+</head>
+<body>
+    <span id="fin">fin</span>&nbsp;&nbsp;&nbsp;
+    <span id="fout">fout</span>&nbsp;&nbsp;&nbsp;
+    <span id="fToggle">fToggle</span>&nbsp;&nbsp;&nbsp;
+    <div id="red"></div>
+    <div id="green"></div>
+    <div id="blue"></div>
+</body>
+</html>

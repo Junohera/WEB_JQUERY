@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12_Effect 06</title>
+    <style>
+        div {
+            width: 80px;
+            height: 80px;
+            margin: 3px;
+            float: left;
+        }
+        #red {background: #ff0000;}
+        #green {background: #0000ff;}
+        #blue {background: #00ff00;}
+    </style>
+    <script src="script/jquery-3.5.1-min.js"></script>
+    <script>
+        $(function(){
+           $("#red").click(function() {
+               $(this).fadeTo(2000, 0.1);
+           })
+           $("#green").click(function() {
+               $(this).fadeTo(2000, 0.3);
+           })
+           $("#blue").click(function() {
+               $(this).fadeTo(2000, 0.6);
+           })
+
+           $("button").click(function() {
+              $("#red").fadeTo(100, 1.0);
+              $("#green").fadeTo(100, 1.0);
+              $("#blue").fadeTo(100, 1.0);
+           });
+        });
+    </script>
+</head>
+<body>
+    <button>원래대로</button>
+    <br>
+    <div id="red"></div>
+    <div id="green"></div>
+    <div id="blue"></div>
+</body>
+</html>

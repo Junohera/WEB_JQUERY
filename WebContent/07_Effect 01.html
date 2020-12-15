@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07_Effect 01</title>
+    <style>
+        span {
+            font-size: 180%;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+    <script src="script/jquery-3.5.1-min.js"></script>
+    <script>
+        $(function(){
+            // 버튼을 클릭하면 display: none으로
+            $("button:eq(0)").click(function() {
+                $("span:first").show();
+            });
+
+            $("button:eq(1)").click(function() {
+                $("span:first").hide();
+            });
+            
+            $("button:eq(2)").click(function() {
+               $("span:last").show(2000);
+            });
+            $("button:eq(3)").click(function() {
+               $("span:last").hide(2000);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>Show It</button>
+    <button>Hide It</button>
+    <span>안녕하세요.</span>
+    <br>
+    <button>Show It</button>
+    <button>Hide It</button>
+    <span>반갑습니다.</span>
+</body>
+</html>

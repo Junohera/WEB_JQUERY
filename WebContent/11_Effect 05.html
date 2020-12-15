@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>11_Effect 05</title>
+    <style>
+        p {
+            position: relative;
+            width: 400px;
+            height: 90px;
+        }
+        div {
+            position: absolute;
+            width: 400px;
+            height: 65px;
+            font-size: 36px;
+            text-align: center;
+            color: yellow;
+            background: red;
+            padding-top: 25px;
+            top: 0px;
+            left: 0;
+            display: none;
+        }
+        span {
+            display: none;
+        }
+    </style>
+    <script src="script/jquery-3.5.1-min.js"></script>
+    <script>
+        $(function(){
+            $("#fadeIn").click(function() {
+                $("div").fadeIn(2000, function() {
+                    $("span").fadeIn(100);
+                });
+            })
+            $("#fadeOut").click(function() {
+                $("div").fadeOut(2000, function() {
+                    $("span").fadeOut(100);
+                });
+            })
+            $("#fadeToggle").click(function() {
+                $("div").fadeToggle(3000, function() {
+                    $("span").fadeToggle(100);
+                });
+            })
+        });
+    </script>
+</head>
+<body>
+    <p>★ fadeIn동작은 불투명도를 점점 높여서 보이도록 한다.</p>
+    <p>★ speed = fast || normal || slow || Number(millisecond)</p>
+    <p>★ 함수안에 익명함수를 전달하여 fadeIn동작 후 실행할 콜백함수 지정</p>
+    <div><span>SUCCESS!</span></div>
+    <button id="fadeIn">fadeIn</button>
+    <button id="fadeOut">fadeOut</button>
+    <button id="fadeToggle">fadeToggle</button>
+</body>
+</html>

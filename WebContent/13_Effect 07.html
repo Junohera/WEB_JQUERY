@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>13_Effect 07</title>
+    <style>
+        * {margin: 0px;padding: 0px;}
+        ul {list-style: none;}
+        img {width: 500px; height: 350px;}
+    </style>
+    <script src="script/jquery-3.5.1-min.js"></script>
+    <script src="script/jquery.innerfade.js"></script>
+    <script>
+        $(function(){
+           $("#inner-fade").innerfade({
+               animationtype: "fade",
+               speed: "slow",
+               timeout: 2000,
+               containerheight: "1em"
+           });
+        });
+    </script>
+</head>
+<body>
+    <ul id="inner-fade">
+        <li><img src="images/Desert.jpg" alt=""></li>
+        <li><img src="images/Hydrangeas.jpg" alt=""></li>
+        <li><img src="images/Chrysanthemum.jpg" alt=""></li>
+        <li><img src="images/Koala.jpg" alt=""></li>
+        <li><img src="images/Penguins.jpg" alt=""></li>
+        <li><img src="images/Tulips.jpg" alt=""></li>
+    </ul>
+</body>
+</html>
