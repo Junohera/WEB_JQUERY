@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <title>19_HRD_Ex</title>
+    <script src="script/jquery-3.5.1-min.js"></script>
+    <style>
+        #base {
+            position: relative;
+            width: 100%;
+            height: 145px;
+            /* border: 1px dashed gray; */
+        }
+
+        #view1 {
+            position: relative;
+            width: 1025px;
+            height: 115px;
+            /* border: 1px solid red; */
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #view2 {
+            position: relative;
+            width: 1025px;
+            height: 30px;
+            /* border: 1px solid blue; */
+            margin: 0 auto;
+        }
+
+        #banners {
+            position: absolute;
+            width: 9225px;
+            height: 115px;
+            /* border: 1px solid green; */
+            top: 0;
+            left: 0;
+        }
+
+        #remote {
+            position: relative;
+            width: 240px;
+            height: 20px;
+            /* border: 1px dotted black; */
+            float: right;
+            margin-top: 4px;
+        }
+
+        .btns {
+            position: relative;
+            width: 18px;
+            height: 18px;
+            border: 1px solid black;
+            float: left;
+            font-size: 90%;
+            font-weight: bold;
+            line-height: 18px;
+            text-align: center;
+        }
+
+        .btns:hover {
+            cursor: default;
+            user-select: none;
+            background-color: black;
+            color: white;
+        }
+    </style>
+    <script>
+        $(function() {
+            var imgNum = 0;
+            var timer = null;
+            var auto = false;
+
+            (function render() {
+                $(
+                    [
+                        "images/H1.png",
+                        "images/H2.png",
+                        "images/H3.png",
+                        "images/H4.png",
+                        "images/H5.png",
+                        "images/H6.png",
+                        "images/H7.png",
+                        "images/H8.png",
+                        "images/H9.png",
+                    ].map(path => '<img src="' + path + '">').join("")
+                ).appendTo("#banners");
+            })();
+
+            (function event() {
+                $(".btns").click(function() {
+                    var index = $(this).index();
+
+                    if (index === 0) {
+                        if (auto) return;
+
+                        imgNum--;
+                        if (imgNum < 0) imgNum = 0;
+                    }
+                    else if (index === 10) {
+                        if (auto) return;
+
+                        imgNum++;
+                        if (imgNum > 8) imgNum = 8;
+                    }
+                    else if (index === 11) {
+                        if (auto) {
+                            window.clearInterval(timer);
+                            auto = false;
+                            $(this).text("⏩");
+                        }
+                        else {
+                            timer = window.setInterval(function() {
+                                imgNum++;
+                                if (imgNum > 8) imgNum = 0;
+                                move();
+                            }, 1000);
+                            auto = true;
+                            $(this).text("⏸");
+                        }
+                    }
+                    else {
+                        if (auto) return;
+                        imgNum = index - 1;
+                    }
+
+                    move();
+                });
+            })();
+
+            (function afterLoad() {
+                $("#btnRun").trigger("click");
+            })();
+
+            function move() {
+                $("#banners").animate({
+                    left: imgNum * 1025 * (-1)
+                }, 200);
+
+                $("#remote div").eq(imgNum + 1).css({
+                    background: "black",
+                    color: "white",
+                }).siblings().css({
+                    background: "white",
+                    color: "black",
+                });
+            };
+        });
+    </script>
+</head>
+
+<body>
+    <div id="base">
+        <div id="view1">
+            <div id="banners"></div>
+        </div>
+        <div id="view2">
+            <div id="remote">
+                <div class="btns" id="btnL">◀️</div>
+                <div class="btns" id="btn0">1</div>
+                <div class="btns" id="btn1">2</div>
+                <div class="btns" id="btn2">3</div>
+                <div class="btns" id="btn3">4</div>
+                <div class="btns" id="btn4">5</div>
+                <div class="btns" id="btn5">6</div>
+                <div class="btns" id="btn6">7</div>
+                <div class="btns" id="btn7">8</div>
+                <div class="btns" id="btn8">9</div>
+                <div class="btns" id="btnR">▶️</div>
+                <div class="btns" id="btnRun">⏸</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
